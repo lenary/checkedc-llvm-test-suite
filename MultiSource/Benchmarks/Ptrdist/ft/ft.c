@@ -187,6 +187,10 @@ PrintMST(_Ptr<Vertices>  graph)
 
   while(vertex != graph)
   {
+    __builtin_assume(vertex != NULL);
+    __builtin_assume(CHOSEN_EDGE(vertex) != NULL);
+    __builtin_assume(SOURCE(CHOSEN_EDGE(vertex)) != NULL);
+
     _Unchecked { printf("vertex %d to %d\n", ID(vertex), ID(SOURCE(CHOSEN_EDGE(vertex)))); }
     vertex = NEXT_VERTEX(vertex);
   }
